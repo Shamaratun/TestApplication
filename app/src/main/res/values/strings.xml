@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TestApplication</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="designation">Designation</string>
+    <string name="update">Update\n</string>
+    <string name="delete">Delete</string>
+    <string name="numberAge">Age</string>
+    <string name="Button">Button\n</string>
+    <string name="DateOfBirth">DateOfBirth</string>
+    <string name="PhoneNo">PhoneNo</string>
+    <string name="doubleSalary">Salary\n</string>
+    <string name="Address">Address</string>
+    <string name="Age">Age</string>
+    <string name="Date_Of_Birth">Date Of Birth</string>
+    <string name="SAVE">SAVE\n</string>
+    <string name="List_Page">list_page</string>
+</resources>
