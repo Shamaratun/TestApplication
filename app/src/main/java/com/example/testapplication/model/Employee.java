@@ -1,25 +1,25 @@
 package com.example.testapplication.model;
 
-import java.time.LocalDate;
-
 public class Employee {
-    public String getName;
-    private long id;
-     private String name;
+    private int id;
+    private String name;
     private String email;
     private String designation;
     private int age;
     private String address;
-
+    private String dob;
     private double salary;
-//    private  String phoneNo;
-    private LocalDate dateOfBirth;
 
-    public long getId() {
+    private String image;
+
+    public Employee() {
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -63,6 +63,14 @@ public class Employee {
         this.address = address;
     }
 
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     public double getSalary() {
         return salary;
     }
@@ -71,23 +79,11 @@ public class Employee {
         this.salary = salary;
     }
 
-//    public String getPhoneNo() {
-//        return phoneNo;
-//    }
-//
-//    public void setPhoneNo(String phoneNo) {
-//        this.phoneNo = phoneNo;
-//    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public String getImage() {
+        return image;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setImage(String image) {
+        this.image = image;
     }
-
-    public Employee() {
-    }
-//    private String image;
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -12,8 +13,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.testapplication.R;
 import com.example.testapplication.adapter.EmployeeAdapter;
+
 import com.example.testapplication.model.Employee;
 import com.example.testapplication.service.ApiService;
 
@@ -25,13 +28,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
 public class EmployeeListActivity extends AppCompatActivity {
-    private static final String TAG = "EmployeeListActivity";
-  private RecyclerView recyclerView;
-   private EmployeeAdapter employeeAdapter;
-    private List<Employee>employeeList = new ArrayList<>();
 
+    private static final String TAG = "EmployeeListActivity";
+    private RecyclerView recyclerView;
+    private EmployeeAdapter employeeAdapter;
+    private List<Employee> employeeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +45,23 @@ public class EmployeeListActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        // Enable the Up button (back arrow) in the ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         employeeAdapter = new EmployeeAdapter(employeeList);
         recyclerView = findViewById(R.id.employeeRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(employeeAdapter);
 
-
         fetchEmployees();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     private void fetchEmployees() {
@@ -57,37 +69,32 @@ public class EmployeeListActivity extends AppCompatActivity {
                 .baseUrl("http://10.0.2.2:8081/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         ApiService apiService = retrofit.create(ApiService.class);
         Call<List<Employee>> call = apiService.getAllEmployee();
 
-        call.enqueue(new Callback<List<Employee>>() {
-
-
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<List<Employee>> call, Response<List<Employee>> response) {
+            public void onResponse(@NonNull Call<List<Employee>> call, @NonNull Response<List<Employee>> response) {
                 if (response.isSuccessful()) {
                     List<Employee> employees = response.body();
+                    assert employees != null;
                     for (Employee emp : employees) {
-                        Log.d(TAG, "ID:" + emp.getId() + " + Name:" + emp.getName() + " + Designation:" + emp.getDesignation());
+                        Log.d(TAG, "ID: " + emp.getId() + ", Name: "
+                                + emp.getName() + ", Designation: " + emp.getDesignation());
                     }
                     employeeList.clear();
                     employeeList.addAll(employees);
                     employeeAdapter.notifyDataSetChanged();
-
-                } else{
-                        Log.e(TAG, "API Response Error: " + response.code());
-                    }
+                } else {
+                    Log.e(TAG, "API Response Error: " + response.code());
                 }
-
-
-
-
+            }
 
             @Override
-            public void onFailure(Call<List<Employee>> call, Throwable t) {
-                Log.e(TAG, "API call failed: " + t.getMessage());
+            public void onFailure(@NonNull Call<List<Employee>> call, @NonNull Throwable t) {
+                Log.e(TAG, "API Call Failed: " + t.getMessage());
             }
         });
     }
-
 }

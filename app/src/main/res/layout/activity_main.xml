@@ -7,191 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnAddEmployee"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter Your Name"
-        android:minHeight="48dp"
-        android:inputType="text"
-        android:textSize="18sp"
+        android:layout_margin="16dp"
+        android:text="@string/add_employee"
+        app:layout_constraintBottom_toTopOf="@id/btnListEmployee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <EditText
-        android:id="@+id/emailText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Enter Your Email Address"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameText" />
-
-    <EditText
-        android:id="@+id/designationText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Enter Your Designation"
-        android:minHeight="48dp"
-        android:inputType="text"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailText" />
-
-
-    <EditText
-        android:id="@+id/multilineAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint=" Enter Your Address"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/designationText" />
-
-    <EditText
-        android:id="@+id/numberAge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Enter your age"
-        android:inputType="number"
-        android:minHeight="48dp"
-
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/multilineAddress" />
-
-    <EditText
-        android:id="@+id/doubleSalary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Enter Your Salary"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp"
-
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/numberAge" />
-
-<!--    <EditText-->
-<!--        android:id="@+id/textPhone"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:hint="Enter Your Phone Number"-->
-<!--        android:inputType="phone"-->
-<!--        android:minHeight="48dp"-->
-<!--        android:text="@string/PhoneNo"-->
-<!--        android:textAlignment="viewStart"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/doubleSalary" />-->
-
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/textDate"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        android:hint="Enter Your Date Of Birth "-->
-    <!--        android:inputType="date"-->
-    <!--        android:text="@string/Date_Of_Birth"-->
-    <!--        android:textSize="18sp"-->
-    <!--        app:layout_constraintBottom_toTopOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="1.0"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/doubleSalary"-->
-    <!--        app:layout_constraintVertical_bias="0.0" />-->
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dateLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_marginTop="20dp"
-        app:endIconContentDescription="Select Date"
-        app:endIconDrawable="@drawable/baseline_calendar_24"
-        app:endIconMode="custom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doubleSalary">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textDate"
-            android:layout_width="372dp"
-            android:layout_height="119dp"
-            android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:focusable="false"
-            android:hint="Select Date of Birth"
-            android:inputType="none"
-            android:paddingTop="50dp"
-
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/dateLayout" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <Button
-        android:id="@+id/button"
-        android:layout_width="122dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="14dp"
-
-        android:text="@string/SAVE"
-
-        android:textAllCaps="true"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
+        android:id="@+id/btnListEmployee"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/list_page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-       />
-    <Button
-        android:id="@+id/btnListPage"
-        android:layout_width="122dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="14dp"
-
-        android:text="@string/List_Page"
-
-        android:textAllCaps="true"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAddEmployee" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
