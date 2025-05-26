@@ -19,6 +19,7 @@ import com.example.testapplication.model.Employee;
 import com.example.testapplication.service.ApiService;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -36,6 +37,10 @@ public class AddEmployeeActivity extends AppCompatActivity {
     private EditText textName, textEmail, textDesignation, numberAge, multilineAddress, decimalSalary;
     private Button btnSave;
     private ApiService apiService;
+
+    private boolean isEditMode= false;
+
+    private int employeeId=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +77,26 @@ public class AddEmployeeActivity extends AppCompatActivity {
 
         dateLayout.setEndIconOnClickListener(v -> showDatePicker());
 
-        btnSave.setOnClickListener(v -> saveEmployee());
+        btnSave.setOnClickListener(v -> saveOrUpdateEmployee());
+
+        Intent intent = getIntent();
+        if(getIntent().hasExtra("employee")){
+            Employee employee = new Gson()
+                    .fromJson(intent.getStringExtra("employee"),Employee.class);
+            employeeId= employee.getId();
+            textName.setText(employee.getName());
+            textEmail.setText(employee.getEmail());
+            textDesignation.setText(employee.getDesignation());
+            numberAge.setText(employee.getAge());
+            multilineAddress.setText(employee.getAddress());
+            editTextDob.setText(employee.getDob());
+            decimalSalary.setText(String.valueOf(employee.getSalary()));
+
+
+            btnSave.setText(R.string.update);
+            isEditMode=true;
+
+        }
     }
 
     @Override
@@ -96,7 +120,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
         picker.show();
     }
 
-    private void saveEmployee() {
+    private void saveOrUpdateEmployee() {
         String name = textName.getText().toString().trim();
         String email = textEmail.getText().toString().trim();
         String designation = textDesignation.getText().toString().trim();
@@ -106,8 +130,12 @@ public class AddEmployeeActivity extends AppCompatActivity {
         String dobString = editTextDob.getText().toString().trim();
         double salary = Double.parseDouble(decimalSalary.getText().toString().trim());
 
+        Employee employee =new Employee();
+        if(isEditMode){
+            employee.setId(employeeId);
+        }
         // Create Employee object
-        Employee employee = new Employee();
+
         employee.setName(name);
         employee.setEmail(email);
         employee.setDesignation(designation);
@@ -116,7 +144,14 @@ public class AddEmployeeActivity extends AppCompatActivity {
         employee.setDob(dobString);
         employee.setSalary(salary);
 
-        Call<Employee> call = apiService.saveEmployee(employee);
+        Call<Employee>call;
+        if(isEditMode){
+            call=apiService.updateEmployee(employeeId, employee);
+        }
+
+        else {
+            call = apiService.saveEmployee(employee);
+        }
         String string = call.toString();
         System.out.println(string);
         call.enqueue(new Callback<>() {
