@@ -15,4 +15,9 @@
     <string name="Date_Of_Birth">Date Of Birth</string>
     <string name="SAVE">SAVE\n</string>
     <string name="List_Page">list_page</string>
+    <string name="address">address</string>
+    <string name="dob">dob</string>
+    <string name="salary">salary</string>
+    <string name="save">save</string>
+    <string name="age">age</string>
 </resources>

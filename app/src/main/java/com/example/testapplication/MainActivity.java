@@ -110,20 +110,21 @@ public class MainActivity extends AppCompatActivity {
             String salary = doubleSalary.getText().toString().trim();
             String age = numberAge.getText().toString().trim();
 //            String phoneNo = textPhone.getText().toString().trim();
-            String dob = textDate.getText().toString().trim();
+            String dobString = textDate.getText().toString().trim();
 
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate dobString = LocalDate.parse(dob, formatter);
+            LocalDate dob = LocalDate.parse(dobString, formatter);
 
             Employee employee = new Employee();
             employee.setName(name);
             employee.setEmail(email);
             employee.setDesignation(designation);
-            employee.setAge(0);
+            employee.setAge(Integer.parseInt(age));
             employee.setAddress(address);
-            employee.setDateOfBirth(dobString);
-            employee.setSalary(0);
+        String dateOfBirth;
+        employee.setDateOfBirth(dobString);
+            employee.setSalary(Double.parseDouble(salary));
 
             Call<Employee> call = apiService.saveEmployee(employee);
             String string = call.toString();

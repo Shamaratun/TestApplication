@@ -1,10 +1,10 @@
 package com.example.testapplication.model;
 
-import java.time.LocalDate;
+
 
 public class Employee {
     public String getName;
-    private long id;
+    private int id;
      private String name;
     private String email;
     private String designation;
@@ -13,13 +13,13 @@ public class Employee {
 
     private double salary;
 //    private  String phoneNo;
-    private LocalDate dateOfBirth;
+    private  String dateOfBirth;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -79,11 +79,11 @@ public class Employee {
 //        this.phoneNo = phoneNo;
 //    }
 
-    public LocalDate getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

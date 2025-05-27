@@ -6,8 +6,11 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ApiService {
     @POST("employee")
@@ -16,5 +19,9 @@ public interface ApiService {
     @GET("employee")
     Call<List<Employee>> getAllEmployee();
 
+    @PUT("employee")
+    Call<Employee> updateEmployee(@Path("id") int id,@Body Employee employee);
+    @DELETE("employee")
+    Call<Void> deleteEmployee(@Path("id") int id);
 }
 

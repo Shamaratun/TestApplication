@@ -43,7 +43,7 @@ public class EmployeeListActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        employeeAdapter = new EmployeeAdapter(employeeList);
+        employeeAdapter = new EmployeeAdapter(this, employeeList);
         recyclerView = findViewById(R.id.employeeRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(employeeAdapter);
